@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH="/home/toor/.local/bin:/home/toor/.bin:/home/toor/.yarn/bin:$PATH"
+export PATH="/home/toor/.bin:/home/toor/.local/bin:/home/toor/.yarn/bin:/home/toor/.local/share/JetBrains/Toolbox/scripts:$PATH"
 
 # If not running interactively, don't do anything
 case $- in
