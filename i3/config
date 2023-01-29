@@ -75,6 +75,17 @@ bindsym $mod+Right focus right
 bindsym $alt+Tab exec python ~/.config/i3/scripts/focus_next.py
 bindsym $alt+Shift+Tab exec python ~/.config/i3/scripts/focus_prev.py
 
+# not sure how this would be useful, todo solve with alt tab, instead of manually reordering windows
+# reordering windows is not really available in other os's i use
+#bindsym $alt+      ?+Tab exec python ~/.config/i3/scripts/move_window_next.py
+#bindsym $alt+Shift+?+Tab exec python ~/.config/i3/scripts/move_window_prev.py
+
+bindsym Control+$alt+Right exec python ~/.config/i3/scripts/focus_next_workspace.py
+bindsym Control+$alt+Left exec python ~/.config/i3/scripts/focus_prev_workspace.py
+
+bindsym Control+$alt+Shift+Right exec python ~/.config/i3/scripts/move_next_workspace.py
+bindsym Control+$alt+Shift+Left exec python ~/.config/i3/scripts/move_prev_workspace.py
+
 # move focused window
 #bindsym $mod+Shift+j move left
 #bindsym $mod+Shift+k move down

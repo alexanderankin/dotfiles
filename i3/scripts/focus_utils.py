@@ -37,3 +37,13 @@ def focus_next():
 
 def focus_prev():
   focus_nth_next_window(-1)
+
+def move_window_to_nth_next_workspace(n_value):
+  workspace_current = i3.filter(i3.get_workspaces(), focused=True)[0]['num']
+  workspace_next = workspace_current + n_value
+  if (workspace_next < 1): return
+
+  workspace_next_str = str(workspace_next)
+
+  i3.move('workspace', workspace_next_str)
+  i3.workspace('number', workspace_next_str)
