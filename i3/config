@@ -86,6 +86,10 @@ bindsym Control+$alt+Left exec python ~/.config/i3/scripts/focus_prev_workspace.
 bindsym Control+$alt+Shift+Right exec python ~/.config/i3/scripts/move_next_workspace.py
 bindsym Control+$alt+Shift+Left exec python ~/.config/i3/scripts/move_prev_workspace.py
 
+# i3/scripts/move_next_whole_workspace.py
+#bindsym Control+$alt+$mod+Shift+Right move container to workspace number $ws1
+#bindsym Control+$alt+$mod+Shift+Left move container to workspace number $ws1
+
 # move focused window
 #bindsym $mod+Shift+j move left
 #bindsym $mod+Shift+k move down
