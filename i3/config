@@ -67,10 +67,10 @@ bindsym $mod+d exec dmenu_run
 #bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 bindsym $alt+Tab exec python ~/.config/i3/scripts/focus_next.py
 bindsym $alt+Shift+Tab exec python ~/.config/i3/scripts/focus_prev.py
