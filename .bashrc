@@ -146,3 +146,5 @@ test -f /usr/bin/terraform && complete -C /usr/bin/terraform terraform
 #fi
 #unset __conda_setup
 ## <<< conda initialize <<<
+
+# /home/toor/.nix-profile/etc/profile.d/nix.sh
