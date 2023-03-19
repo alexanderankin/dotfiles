@@ -4,3 +4,6 @@ alias dns_google='nmcli device modify wlp0s20f3 ipv4.dns 8.8.8.8,8.8.4.4 && nmcl
 alias clearssh="for i in \$(ps -aux | grep ssh | awk '{ print \$2 }'); do kill -9 \$i; done;"
 
 function devurandom() { cat /dev/urandom | tr -dc 'a-zA-Z0-9#' | head -c ${1:-20} && printf '#' && echo; }
+
+function gigabit_ethernet() { sudo ethtool -s $1 autoneg off speed 1000 duplex full; }
+command -v complete >/dev/null 2>&1 && $(complete -p ethtool | sed '$s/\w*$/gigabit_ethernet/');
