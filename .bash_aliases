@@ -1,3 +1,8 @@
+# https://git.launchpad.net/ubuntu/+source/base-files/tree/share/dot.bashrc
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 alias wanip4='curl -s4 icanhazip.com'
 alias wanip6='curl -s6 icanhazip.com'
 alias dns_google='nmcli device modify wlp0s20f3 ipv4.dns 8.8.8.8,8.8.4.4 && nmcli device modify wlp0s20f3 ipv6.dns 2001:4860:4860::8888,2001:4860:4860::8844'
