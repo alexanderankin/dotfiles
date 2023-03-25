@@ -11,4 +11,5 @@ alias clearssh="for i in \$(ps -aux | grep ssh | awk '{ print \$2 }'); do kill -
 function devurandom() { cat /dev/urandom | tr -dc 'a-zA-Z0-9#' | head -c ${1:-20} && printf '#' && echo; }
 
 function gigabit_ethernet() { sudo ethtool -s $1 autoneg off speed 1000 duplex full; }
-command -v complete >/dev/null 2>&1 && $(complete -p ethtool | sed '$s/\w*$/gigabit_ethernet/');
+# https://unix.stackexchange.com/a/9607
+[ -z $SSH_TTY ] && command -v complete >/dev/null 2>&1 && $(complete -p ethtool | sed '$s/\w*$/gigabit_ethernet/');
