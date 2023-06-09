@@ -17,5 +17,5 @@ function gigabit_ethernet() { sudo ethtool -s $1 autoneg off speed 1000 duplex f
 [ -z $SSH_TTY ] && command -v complete >/dev/null 2>&1 && $(complete -p ethtool | sed '$s/\w*$/gigabit_ethernet/');
 
 # aliases for using external kb
-set_pinky_row_ext() { xmodmap -e 'keycode 110 = Home' -e 'keycode 112 = Prior' -e 'keycode 117 = Next' -e 'keycode 115 = End'; }
-set_pinky_row_us() { xmodmap -e 'keycode 112 = Home' -e 'keycode 117 = Prior' -e 'keycode 110 = Next' -e 'keycode 115 = End'; }
+set_pinky_row_ext() { xmodmap -e 'keycode 112 = Home' -e 'keycode 117 = Prior' -e 'keycode 110 = Next' -e 'keycode 115 = End'; }
+set_pinky_row_us() { xmodmap -e 'keycode 110 = Home' -e 'keycode 112 = Prior' -e 'keycode 117 = Next' -e 'keycode 115 = End'; }
