@@ -19,3 +19,5 @@ function gigabit_ethernet() { sudo ethtool -s $1 autoneg off speed 1000 duplex f
 # aliases for using external kb
 set_pinky_row_ext() { xmodmap -e 'keycode 112 = Home' -e 'keycode 117 = Prior' -e 'keycode 110 = Next' -e 'keycode 115 = End'; }
 set_pinky_row_us() { xmodmap -e 'keycode 110 = Home' -e 'keycode 112 = Prior' -e 'keycode 117 = Next' -e 'keycode 115 = End'; }
+
+function aws_completion() { complete -C $(which aws_completer) aws; }
