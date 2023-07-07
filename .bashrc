@@ -118,6 +118,16 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# custom folder for bash completions to get them out of the way
+if [ -d ~/.bash_completions.d ]; then
+  for i in ~/.bash_completions.d/*.sh; do
+    if [ -r "$i" ]; then
+      . "$i"
+    fi  
+  done
+  unset i
+fi
+
 # and custom location for local completions
 if ! shopt -oq posix; then
     [ -f "$HOME/.config/bash_completion" ] && . "$HOME/.config/bash_completion";
