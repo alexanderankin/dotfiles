@@ -21,3 +21,5 @@ set_pinky_row_ext() { xmodmap -e 'keycode 112 = Home' -e 'keycode 117 = Prior' -
 set_pinky_row_us() { xmodmap -e 'keycode 110 = Home' -e 'keycode 112 = Prior' -e 'keycode 117 = Next' -e 'keycode 115 = End'; }
 
 function aws_completion() { complete -C $(which aws_completer) aws; }
+
+function certonly () { sudo certbot --dry-run certonly --webroot -w "/var/www/verification/$1" -d "$1"; }
