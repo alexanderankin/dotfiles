@@ -23,3 +23,16 @@ set_pinky_row_us() { xmodmap -e 'keycode 110 = Home' -e 'keycode 112 = Prior' -e
 function aws_completion() { complete -C $(which aws_completer) aws; }
 
 function certonly () { sudo certbot --dry-run certonly --webroot -w "/var/www/verification/$1" -d "$1"; }
+
+function git_remote_fix_https_to_ssh() {
+    git remote set-url origin $(git remote get-url origin  | sed 's#https://github.com/\(.*\)#git@github.com:\1#');
+}
+
+desired_committer () {
+    local n=$(echo $1 | sed 's/ <.*//');
+    local e=$(echo $1 | sed -e 's/.*<//' -e 's/>$//');
+    git config user.email "$e";
+    git config user.name "$n"
+}
+
+desired_committer_from_last() { desired_committer "$(git log -n1 --format='%aN <%aE>')"; }
