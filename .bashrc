@@ -3,6 +3,7 @@
 # for examples
 
 export PATH="/home/toor/.bin:/home/toor/.local/bin:/home/toor/.yarn/bin:/home/toor/.local/share/JetBrains/Toolbox/scripts:$PATH"
+export TOTP_PASS=p # no i dont care - its not for security, its for convenience
 
 # If not running interactively, don't do anything
 case $- in
