@@ -36,3 +36,4 @@ desired_committer () {
 }
 
 desired_committer_from_last() { desired_committer "$(git log -n1 --format='%aN <%aE>')"; }
+fork_it() { git remote add $2 $(git remote get-url origin | sed "s/$1/$2/") ; }
