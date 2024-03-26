@@ -159,13 +159,14 @@ test -f /usr/bin/terraform && complete -C /usr/bin/terraform terraform
 
 # ~/.nix-profile/etc/profile.d/nix.sh
 
-[[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
-gvm use go1.21
-eval "$(rbenv init -)"
+[[ -s ~/.gvm/scripts/gvm ]] && source ~/.gvm/scripts/gvm
+[[ -s ~/.gvm/scripts/gvm ]] && gvm use go1.21
+command -v rbenv > /dev/null && eval "$(rbenv init -)"
 
 
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
+[[ -f ~/.asdf/asdf.sh ]] && . ~/.asdf/asdf.sh
+[[ -f ~/.asdf/completions/asdf.bash ]] && . ~/.asdf/completions/asdf.bash
+
 #. <(totp4j generate-completion)
 
 # add Pulumi to the PATH
