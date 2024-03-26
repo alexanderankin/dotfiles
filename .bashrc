@@ -2,7 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH="/home/toor/.bin:/home/toor/.local/bin:/home/toor/.yarn/bin:/home/toor/.local/share/JetBrains/Toolbox/scripts:$PATH"
 export TOTP_PASS=p # no i dont care - its not for security, its for convenience https://github.com/yitsushi/totp-cli
 
 # If not running interactively, don't do anything
@@ -99,15 +98,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 #alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -129,6 +119,15 @@ if [ -d ~/.bash_completions.d ]; then
   unset i
 fi
 
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # and custom location for local completions
 if ! shopt -oq posix; then
     [ -f "$HOME/.config/bash_completion" ] && . "$HOME/.config/bash_completion";
@@ -145,17 +144,34 @@ test -f /usr/bin/terraform && complete -C /usr/bin/terraform terraform
 
 ## >>> conda initialize >>>
 ## !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/toor/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#__conda_setup="$('~/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 #if [ $? -eq 0 ]; then
 #    eval "$__conda_setup"
 #else
-#    if [ -f "/home/toor/miniconda3/etc/profile.d/conda.sh" ]; then
-#        . "/home/toor/miniconda3/etc/profile.d/conda.sh"
+#    if [ -f "~/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "~/miniconda3/etc/profile.d/conda.sh"
 #    else
-#        export PATH="/home/toor/miniconda3/bin:$PATH"
+#        export PATH="~/miniconda3/bin:$PATH"
 #    fi
 #fi
 #unset __conda_setup
 ## <<< conda initialize <<<
 
-# /home/toor/.nix-profile/etc/profile.d/nix.sh
+# ~/.nix-profile/etc/profile.d/nix.sh
+
+[[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
+gvm use go1.21
+eval "$(rbenv init -)"
+
+
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+#. <(totp4j generate-completion)
+
+# add Pulumi to the PATH
+export PATH=$PATH:~/.pulumi/bin
+
+# Added by Toolbox App
+export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
+# if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
