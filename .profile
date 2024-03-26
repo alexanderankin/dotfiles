@@ -33,5 +33,3 @@ fi
 # add favorite locations and default user $(yarn global bin)
 export PATH="$PATH:~/.yarn/bin"
 # todo paths for other node tooling on other os
-
-export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
