@@ -11,6 +11,10 @@ for i in ~/.bashrc ~/.bash_aliases ~/.profile ; do files="$files $i"; done; unse
 backup=$(date +%Y-%m-%d)
 
 for f in $files; do
-  mv -vn $f{,.backup.$backup};
-  ln -s $dir/$(basename $f) $f;
+  echo installing $f
+  mv -vn $f{,.backup.$backup} || :;
+
+  src="$dir/$(basename $f)"
+  [[ -h "$f" ]] && rm "$f" # if dest is link, remove it
+  ln -s "$src" $f;
 done
