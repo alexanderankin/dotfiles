@@ -176,3 +176,7 @@ export PATH=$PATH:~/.pulumi/bin
 export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
 # if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 # export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
