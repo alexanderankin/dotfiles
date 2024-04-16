@@ -93,7 +93,7 @@ alias wanip6='curl -s6 icanhazip.com'
 
 fork_it() { git remote add $2 $(git remote get-url origin | sed "s/$1/$2/"); }
 
-aws_completion() { complete -C $(which aws_completer) aws; }
+complete -C "$(which aws_completer)" aws
 
 # HCP products
 [[ -f /usr/bin/terraform ]] && {

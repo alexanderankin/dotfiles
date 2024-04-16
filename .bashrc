@@ -180,3 +180,6 @@ export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+# totp4j detects it here
+export PATH="$PATH:~/.local/bin"
