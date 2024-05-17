@@ -7,3 +7,4 @@ set expandtab
 set number
 set lbr
 set so=5
+cabbrev p prev
