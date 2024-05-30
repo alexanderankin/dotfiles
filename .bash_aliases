@@ -13,6 +13,15 @@ _has_bc() {
     if ! [[ "$(type -t _available_interfaces)" == "function" ]] ; then return 1 ; else return 0; fi
 }
 
+parse_jwt() {
+    local jwt=$1;
+    local header=$(cut -d'.' -f1 <<< $jwt);
+    local body=$(cut -d'.' -f2 <<< $jwt);
+    echo "header:";
+    echo $header | base64 -d 2>/dev/null | jq . || true;
+    echo "body:";
+    echo $body | base64 -d 2>/dev/null | jq . || true;
+}
 
 ###
 ### local environment management
@@ -93,7 +102,7 @@ alias wanip6='curl -s6 icanhazip.com'
 
 fork_it() { git remote add $2 $(git remote get-url origin | sed "s/$1/$2/"); }
 
-complete -C "$(which aws_completer)" aws
+complete -C aws_completer aws
 
 # HCP products
 [[ -f /usr/bin/terraform ]] && {
