@@ -115,3 +115,5 @@ complete -C aws_completer aws
 }
 
 [[ -f /usr/bin/vault ]] && complete -C /usr/bin/vault vault
+
+alias hs=http-server
