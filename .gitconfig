@@ -1,0 +1,13 @@
+[alias]
+	co = checkout
+	br = branch
+	sta = status
+	stat = status
+	ad = add
+	cp = cherry-pick
+	stats = status
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+
