@@ -3,12 +3,15 @@
 # for examples
 
 export TOTP_PASS=p # no i dont care - its not for security, its for convenience https://github.com/yitsushi/totp-cli
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+test -x /opt/homebrew/bin/brew && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -134,6 +137,8 @@ if ! shopt -oq posix; then
     [ -d "$HOME/.config/bash_completion.d" ] && source <(cat "$HOME"/.config/bash_completion.d/*);
 fi
 
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -167,13 +172,18 @@ command -v rbenv > /dev/null && eval "$(rbenv init -)"
 [[ -f ~/.asdf/asdf.sh ]] && . ~/.asdf/asdf.sh
 [[ -f ~/.asdf/completions/asdf.bash ]] && . ~/.asdf/completions/asdf.bash
 
-#. <(totp4j generate-completion)
 
 # add Pulumi to the PATH
 export PATH=$PATH:~/.pulumi/bin
 
+if [[ ! -z ${HOMEBREW_PREFIX:-} ]] ; then
+# Added by Toolbox App
+export PATH="$PATH:~/Library/Application Support/JetBrains/Toolbox/scripts"
+else
 # Added by Toolbox App
 export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
+fi
+
 # if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 # export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 
@@ -181,5 +191,9 @@ export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
-# totp4j detects it here
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:~/.bin:~/bin:~/.local/bin"
+
+if [[ ! -z ${HOMEBREW_PREFIX:-} ]] ; then
+    # java fast on mac
+    . <(totp4j generate-completion)
+fi

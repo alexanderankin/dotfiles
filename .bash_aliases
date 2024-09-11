@@ -85,6 +85,7 @@ complete -F token_for_ token_for
 print_top_n_files() { sudo du -ha $1 | sort -h -r | head -n ${2:-50}; }
 
 alias mqtt='java -jar ~/.bin/mqtt-cli-4.8.1.jar'
+alias hs=http-server
 
 # clipboard
 # [[ -f 'C:\Windows\System32\clip.exe' ]] && :; # no alias necessary
@@ -97,8 +98,10 @@ alias mqtt='java -jar ~/.bin/mqtt-cli-4.8.1.jar'
 alias wanip4='curl -s4 icanhazip.com'
 alias wanip6='curl -s6 icanhazip.com'
 
-# . <(kind completion bash)
-# . <(kubectl completion bash)
+command -v kind > /dev/null && source <(kind completion bash)
+command -v kubectl > /dev/null && source <(kubectl completion bash)
+alias tf=terraform
+command -v vault > /dev/null && complete -C vault vault
 
 fork_it() { git remote add $2 $(git remote get-url origin | sed "s/$1/$2/"); }
 
