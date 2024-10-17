@@ -108,11 +108,12 @@ fork_it() { git remote add $2 $(git remote get-url origin | sed "s/$1/$2/"); }
 complete -C aws_completer aws
 
 # HCP products
-[[ -f /usr/bin/terraform ]] && {
+command -v terraform > /dev/null && {
+    which_tf=$(which terraform)
     alias tf=terraform
-    complete -C /usr/bin/terraform terraform
-    complete -C /usr/bin/terraform tf
-}
+    complete -C $which_tf terraform
+    complete -C $which_tf tf
+} || { :; }
 
 [[ -f /usr/bin/vault ]] && complete -C /usr/bin/vault vault
 
