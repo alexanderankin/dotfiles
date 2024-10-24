@@ -16,6 +16,7 @@ test -x /opt/homebrew/bin/brew && {
   export PATH="$(brew --prefix python@3.11)/libexec/bin:$PATH"
   export PATH="$(brew --prefix gsed)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix gawk)/libexec/gnubin:$PATH"
+  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 }
 
 # don't put duplicate lines or lines starting with space in the history.
