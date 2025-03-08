@@ -176,8 +176,18 @@ test -f /usr/bin/terraform && complete -C /usr/bin/terraform terraform
 command -v rbenv > /dev/null && eval "$(rbenv init -)"
 
 
-[[ -f ~/.asdf/asdf.sh ]] && . ~/.asdf/asdf.sh
-[[ -f ~/.asdf/completions/asdf.bash ]] && . ~/.asdf/completions/asdf.bash
+# asdf was rewritten in go in version 0.16
+command -v asdf > /dev/null && {
+  export ASDF_DATA_DIR=~/.asdf
+  export PATH="$PATH:$ASDF_DATA_DIR/shims"
+} || {
+  alias setup_asdf="git clone https://github.com/asdf-vm/asdf.git ~/.asdf && cd ~/.asdf && make"
+  alias download_asdf="curl -fSsL 'https://api.github.com/repos/asdf-vm/asdf/releases' | jq .[0].assets[].browser_download_url -r"
+}
+
+# previous version of asdf were shell utilities:
+#[[ -f ~/.asdf/asdf.sh ]] && . ~/.asdf/asdf.sh
+#[[ -f ~/.asdf/completions/asdf.bash ]] && . ~/.asdf/completions/asdf.bash
 
 
 # add Pulumi to the PATH
