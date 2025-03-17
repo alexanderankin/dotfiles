@@ -101,6 +101,7 @@ alias wanip6='curl -s6 icanhazip.com'
 command -v kind > /dev/null && source <(kind completion bash)
 command -v kubectl > /dev/null && source <(kubectl completion bash)
 alias tf=terraform
+alias tf=tofu
 command -v vault > /dev/null && complete -C vault vault
 
 fork_it() { git remote add $2 $(git remote get-url origin | sed "s/$1/$2/"); }
