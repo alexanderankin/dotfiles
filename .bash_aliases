@@ -100,22 +100,20 @@ alias wanip6='curl -s6 icanhazip.com'
 
 command -v kind > /dev/null && source <(kind completion bash)
 command -v kubectl > /dev/null && source <(kubectl completion bash)
-alias tf=terraform
-alias tf=tofu
-command -v vault > /dev/null && complete -C vault vault
 
 fork_it() { git remote add $2 $(git remote get-url origin | sed "s/$1/$2/"); }
 
 complete -C aws_completer aws
 
-# HCP products
-command -v terraform > /dev/null && {
-    which_tf=$(which terraform)
-    alias tf=terraform
+# busl/foss HCP products
+command -v tofu > /dev/null && {
+    which_tf=$(which tofu)
+    alias tf=tofu
     complete -C $which_tf terraform
     complete -C $which_tf tf
 } || { :; }
 
+command -v vault > /dev/null && complete -C vault vault
 [[ -f /usr/bin/vault ]] && complete -C /usr/bin/vault vault
 
 alias hs=http-server
