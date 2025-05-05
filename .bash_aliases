@@ -117,3 +117,4 @@ command -v vault > /dev/null && complete -C vault vault
 [[ -f /usr/bin/vault ]] && complete -C /usr/bin/vault vault
 
 alias hs=http-server
+alias tf=tofu
