@@ -208,8 +208,6 @@ fi
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 
-export PATH="$PATH:~/.bin:~/bin:~/.local/bin"
-
 if [[ ! -z ${HOMEBREW_PREFIX:-} ]] ; then
     # java fast on mac
     . <(totp4j generate-completion)
