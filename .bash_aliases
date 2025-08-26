@@ -119,6 +119,7 @@ command -v vault > /dev/null && complete -C vault vault
 alias hs=http-server
 alias tf=tofu
 
-# PKG=json2yaml; BINS=(json2yaml yaml2json); { [[ -d ~/.$PKG-venv ]] || python -m venv ~/.$PKG-venv; } && . ~/.$PKG-venv/bin/activate && pip install -U pip wheel && pip install $PKG && for b in "${BINS[@]}"; do ln -fvrs $(which $b) ~/.local/bin; done && deactivate
+# PKG=json-conv; BINS=(json2yaml yaml2json toml2json json2toml json2csv csv2json); { [[ -d ~/.$PKG-venv ]] || python -m venv ~/.$PKG-venv; } && . ~/.$PKG-venv/bin/activate && pip install -U pip wheel && pip install 'git+https://github.com/alexanderankin/side-projects.git@main#egg='"$PKG"'&subdirectory=misc/projects/json-converters' && for b in "${BINS[@]}"; do ln -fvrs $(which $b) ~/.local/bin; done && deactivate
 # PKG=ruff; BINS=(ruff); { [[ -d ~/.$PKG-venv ]] || python -m venv ~/.$PKG-venv; } && . ~/.$PKG-venv/bin/activate && pip install -U pip wheel && pip install $PKG && for b in "${BINS[@]}"; do ln -fvrs $(which $b) ~/.local/bin; done && deactivate
 # PKG=poetry; BINS=(poetry); { [[ -d ~/.$PKG-venv ]] || python -m venv ~/.$PKG-venv; } && . ~/.$PKG-venv/bin/activate && pip install -U pip wheel && pip install $PKG && for b in "${BINS[@]}"; do ln -fvrs $(which $b) ~/.local/bin; done && deactivate
+# PKG=oci-cli; BINS=(oci); { [[ -d ~/.$PKG-venv ]] || python -m venv ~/.$PKG-venv; } && . ~/.$PKG-venv/bin/activate && pip install -U pip wheel && pip install $PKG && for b in "${BINS[@]}"; do ln -fvrs $(which $b) ~/.local/bin; done && deactivate
