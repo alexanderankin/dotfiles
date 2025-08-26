@@ -14,6 +14,7 @@ esac
 test -x /opt/homebrew/bin/brew && {
   eval "$(/opt/homebrew/bin/brew shellenv)"
   export PATH="$(brew --prefix python@3.11)/libexec/bin:$PATH"
+  export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix gsed)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix gawk)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
