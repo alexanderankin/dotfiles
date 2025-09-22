@@ -1,0 +1,2 @@
+# After reading that file, it looks for ~/.bash_profile,
+# ~/.bash_login, and ~/.profile, in that order

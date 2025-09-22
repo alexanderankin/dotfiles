@@ -3,13 +3,15 @@
 _should_complete() {
     # https://unix.stackexchange.com/a/9607
     # basically an interactive check (?)
-    if ! [[ -z $SSH_TTY ]] ; then return 1 ; fi
+    # if not empty, return error (false)
+    if [[ -n $SSH_TTY ]] ; then return 1 ; fi
     return 0
 }
 
 _has_bc() {
     # _available_interfaces comes from bash-completions package
     # check if we have the bash completions package available
+    # if not type is function = return error
     if ! [[ "$(type -t _available_interfaces)" == "function" ]] ; then return 1 ; else return 0; fi
 }
 
@@ -38,7 +40,8 @@ _should_complete && _has_bc && complete -F _available_interfaces dns_google
 # https://unix.stackexchange.com/a/349821
 # https://superuser.com/a/1088260
 scan_ssh() { ssh-keygen -l -E md5 -f <(ssh-keyscan "$1" 2>/dev/null); }
-_should_complete && _has_bc && { __load_completion ssh && complete -F _ssh scan_ssh; }
+# this one is neat but not perf friendly
+# _should_complete && _has_bc && { __load_completion ssh && complete -F _ssh scan_ssh; }
 
 gigabit_ethernet() { sudo ethtool -s $1 autoneg off speed 1000 duplex full; }
 _should_complete && _has_bc && complete -F _available_interfaces gigabit_ethernet
@@ -98,8 +101,8 @@ alias hs=http-server
 alias wanip4='curl -s4 icanhazip.com'
 alias wanip6='curl -s6 icanhazip.com'
 
-command -v kind > /dev/null && source <(kind completion bash)
-command -v kubectl > /dev/null && source <(kubectl completion bash)
+# command -v kind > /dev/null && source <(kind completion bash)
+# command -v kubectl > /dev/null && source <(kubectl completion bash)
 
 fork_it() { git remote add $2 $(git remote get-url origin | sed "s/$1/$2/"); }
 
@@ -109,10 +112,11 @@ complete -C aws_completer aws
 command -v tofu > /dev/null && {
     which_tf=$(which tofu)
     alias tf=tofu
-    complete -C $which_tf terraform
+    complete -C $which_tf tofu
     complete -C $which_tf tf
 } || { :; }
 
+command -v terraform > /dev/null && complete -C "$(which terraform)" terraform
 command -v vault > /dev/null && complete -C vault vault
 [[ -f /usr/bin/vault ]] && complete -C /usr/bin/vault vault
 
