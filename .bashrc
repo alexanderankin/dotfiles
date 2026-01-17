@@ -9,6 +9,7 @@ case $- in
 esac
 
 # original: https://git.launchpad.net/ubuntu/+source/bash/tree/debian/skel.bashrc?h=ubuntu/noble
+homebrew_dir=${homebrew_dir:-/opt/homebrew}
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -78,7 +79,7 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
-if [ -x /usr/bin/dircolors ] || [ -x /opt/homebrew/bin/brew ]; then
+if [ -x /usr/bin/dircolors ] || [ -x $homebrew_dir/bin/brew ]; then
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -111,7 +112,7 @@ if ! shopt -oq posix; then
     fi
 
   # macos equivalent
-  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+  [[ -r "$homebrew_dir/etc/profile.d/bash_completion.sh" ]] && . "$homebrew_dir/etc/profile.d/bash_completion.sh"
 fi
 
 # not perf friendly

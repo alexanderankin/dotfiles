@@ -15,8 +15,15 @@ export TOTP_PASS=p # no i dont care - its not for security, its for convenience 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # homebrew paths
-test -x /opt/homebrew/bin/brew && {
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+homebrew_dir=
+if [[ $homebrew_dir = "" && -d /opt/homebrew ]]; then homebrew_dir=/opt/homebrew; fi
+if [[ $homebrew_dir = "" && -d ~/homebrew ]]; then homebrew_dir=~/homebrew; fi
+if [[ $homebrew_dir =~ /Users* ]]; then
+  # rootless homebrew workarounds
+  export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+fi
+test -x $homebrew_dir/bin/brew && {
+  eval "$($homebrew_dir/bin/brew shellenv)"
   export PATH="$(brew --prefix python@3.14)/libexec/bin:$PATH"
   export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix gsed)/libexec/gnubin:$PATH"
