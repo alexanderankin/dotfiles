@@ -25,11 +25,16 @@ fi
 test -x $homebrew_dir/bin/brew && {
   eval "$($homebrew_dir/bin/brew shellenv)"
   export PATH="$(brew --prefix python@3.14)/libexec/bin:$PATH"
-  export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
-  export PATH="$(brew --prefix gsed)/libexec/gnubin:$PATH"
-  export PATH="$(brew --prefix gawk)/libexec/gnubin:$PATH"
-  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix ruby)/bin:$PATH"
+
+  # minimal set:
+  # brew install findutils gsed gawk coreutils
+  # extended set from https://gist.github.com/skyzyx/3438280b18e4f7c490db8a2a2ca0b9da
+  # brew install autoconf bash binutils coreutils diffutils ed findutils flex gawk \
+  #   gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less m4 make nano \
+  #   screen watch wdiff wget zip
+  export PATH="$(find $homebrew_dir -mindepth 5 -maxdepth 5 -type d -name gnubin | tr '\n' ':')$PATH"
+  # e.g. /opt/homebrew/Cellar/findutils/4.10.0/libexec/gnubin
 
   export PATH="$PATH":~/Library/Android/sdk/platform-tools
 }
