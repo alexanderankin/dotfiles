@@ -142,7 +142,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [[ -n ${HOMEBREW_PREFIX:-} ]] ; then
+if [[ -n ${HOMEBREW_PREFIX:-} ]] && command -v totp4j >/dev/null 2>&1; then
     # java fast on mac
     . <(totp4j generate-completion)
 fi
