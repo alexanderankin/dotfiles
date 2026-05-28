@@ -13,6 +13,7 @@
 # set env vars
 export TOTP_PASS=p # no i dont care - its not for security, its for convenience https://github.com/yitsushi/totp-cli
 export HOMEBREW_NO_AUTO_UPDATE=1
+export AWS_NEW_RETRIES_2026=true
 
 # homebrew paths
 homebrew_dir=
