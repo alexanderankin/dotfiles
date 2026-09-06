@@ -27,6 +27,7 @@ test -x $homebrew_dir/bin/brew && {
   eval "$($homebrew_dir/bin/brew shellenv)"
   export PATH="$(brew --prefix python@3.14)/libexec/bin:$PATH"
   export PATH="$(brew --prefix ruby)/bin:$PATH"
+  export PATH="$(brew --prefix binutils)/bin:$PATH"
 
   # minimal set:
   # brew install findutils gsed gawk coreutils
