@@ -7,6 +7,9 @@ winget install -e --id Python.Python.3.14 --accept-package-agreements --accept-s
 winget install -e --id OpenJS.NodeJS.LTS --accept-package-agreements --accept-source-agreements
 winget install -e --id GnuWin32.Zip --accept-package-agreements --accept-source-agreements
 winget install -e --id GnuWin32.UnZip --accept-package-agreements --accept-source-agreements
+winget install -e --id SublimeHQ.SublimeText.4 --accept-package-agreements --accept-source-agreements
+winget install -e --id GitHub.cli --accept-package-agreements --accept-source-agreements
+
 export PATH="$PATH:$(cygpath -w /c/Program\ Files\ \(x86\)/GnuWin32/bin)"
 curl -s "https://get.sdkman.io" | bash
 . ~/.sdkman/bin/sdkman-init.sh
