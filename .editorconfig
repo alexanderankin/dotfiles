@@ -1,3 +1,7 @@
 [{*.bash*,*.sh,.profile}]
 indent_size = 2
 tab_width = 2
+
+[{*.yaml,*.yml,*.tpl}]
+indent_size = 2
+tab_width = 2
